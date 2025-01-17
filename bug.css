@@ -1,0 +1,28 @@
+The following CSS code snippet demonstrates an uncommon bug related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.my-class {
+  color: red;
+}
+
+.my-class div {
+  color: green;
+}
+
+```
+
+This looks straightforward, but consider the element structure below:
+
+```html
+<div class="my-class">
+  <div>This text should be green.</div>
+</div>
+```
+
+Intuitively, one might expect "This text should be green" to display in green, given the specificity of the `.my-class div` selector. However, due to how specificity works in CSS, the text will actually be red. This is because the `div` selector with `class="my-class" ` is more specific than `.my-class div`, so it overrides the more nested rule. The order of the rules does not affect the outcome, only the specificity.
+
+This is an uncommon bug because it highlights a counter-intuitive aspect of CSS specificity that often leads to unexpected visual outcomes, even for experienced developers.
