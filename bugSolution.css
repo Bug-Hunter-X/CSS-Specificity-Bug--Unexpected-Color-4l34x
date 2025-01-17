@@ -1,0 +1,17 @@
+The solution involves using more specific selectors to correctly apply the intended styles.
+
+```css
+div {
+  color: blue;
+}
+
+.my-class {
+  color: red;
+}
+
+.my-class > div {
+  color: green; /* More specific selector using the child combinator */
+}
+```
+
+By using the `>` child combinator in the `.my-class > div` selector, we explicitly target the direct child `div` elements of the `.my-class` element. This makes the rule more specific than `.my-class`'s `color: red`, resulting in the desired green color for the text.  Alternatively, increasing specificity through additional classes or IDs on the inner div would also solve the issue.
